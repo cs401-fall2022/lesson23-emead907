@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    {%- comment -%}
+      <link rel="stylesheet" href=\public\css\style.css>
+    {%- endcomment -%}
+    <link rel="stylesheet" href="">
+    <meta charset="utf-8">
+    <title>Final Blog</title>
+  </head>
+
+  <div class="header">
+    <h2>Emily's Final Blog!</h2>
+  </div>
+  <div class="row">
+    <div class="leftcolumn">
+      <div class="container">
+        <h2>BLOG TITLE</h2>
+        <h5>Date</h5>
+        <p>Post</p>
+      </div>
+      <div class="container">
+        <h2>BLOG TITLE</h2>
+        <h5>Date</h5>
+        <p>Post</p>
+      </div>
+    </div>
+    <div class="rightcolumn">
+
+      <div class="container">
+        <h3>Add Post</h3>
+        <div class="btn">New Post</div><br>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <h2>Footer</h2>
+  </div>
+
+  {%- comment -%}
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{title}}
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    </head>
+    <body>
+    <h1>Hello World</h1>
+    <img src="/images/exploits_of_a_mom.png">
+    <ul>
+    {% for txt in data%}
+    <ul>{{txt.blog_id}}
+    -
+    {{txt.blog_txt}}
+    </ul>
+    {% endfor%}
+    </ul>
+
+    <hr>
+    <h2>Add stuff</h2>
+    <form action="/add" method="POST">
+    <div>
+    <label for="blog">What is your blog txt?</label>
+    <input name="blog" id="blog" value="Hi this is my blog text!"/>
+    </div>
+    <div>
+    <button>Send my blog</button>
+    </div>
+    </form>
+    <hr>
+    <h2>Delete stuff</h2>
+    <form action="/delete" method="POST">
+    <div>
+    <label for="blog">Blog to delete?</label>
+    <input name="blog" id="blog" value="1"/>
+    </div>
+    <div>
+    <button>delete my blog</button>
+    </div>
+    </form>
+    </body>
+    </html>>>>{%- endcomment -%}
+</html>>>
