@@ -55,6 +55,7 @@ router.post('/add', (req, res, next) => {
       //HINT: the answer is in the XKCD comic on the home page little bobby tables :)
       db.exec(`insert into blog ( blog_txt)
                 values ('${req.body.blog}');`)
+    
       //redirect to homepage
       res.redirect('/');
     }

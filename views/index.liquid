@@ -1,90 +1,224 @@
 <!DOCTYPE html>
 <html>
-
-  <head>
-    {%- comment -%}
-      <link rel="stylesheet" href=\public\css\style.css>
-    {%- endcomment -%}
-    <link rel="stylesheet" href="">
-    <meta charset="utf-8">
-    <title>Final Blog</title>
-  </head>
-
-  <div class="header">
-    <h2>Emily's Final Blog!</h2>
-  </div>
-  <div class="row">
-    <div class="leftcolumn">
-      <div class="container">
-        <h2>BLOG TITLE</h2>
-        <h5>Date</h5>
-        <p>Post</p>
-      </div>
-      <div class="container">
-        <h2>BLOG TITLE</h2>
-        <h5>Date</h5>
-        <p>Post</p>
-      </div>
-    </div>
-    <div class="rightcolumn">
-
-      <div class="container">
-        <h3>Add Post</h3>
-        <div class="btn">New Post</div><br>
-
-      </div>
-
-    </div>
-  </div>
-
-  <div class="footer">
-    <h2>Footer</h2>
-  </div>
-
-  {%- comment -%}
     <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{title}}
-    </title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{title}}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+
+        <style>
+            .ballBackground {
+            background-color: rgb(216, 178, 205);
+            height: 200px;
+            width: 500px;
+            position: absolute;
+            }
+
+            .ballAnimation {
+                background-color: rgb(76, 143, 187);
+                height: 50px;
+                width: 50px;
+                top: 50px;
+                left: 220px;
+                border-radius: 50%;
+                position: relative;
+                animation: bonce 1s infinite;
+            }
+
+            @keyframes bonce {
+                 
+                 
+            10%   {
+                height: 50px;
+                width: 50px;
+                
+            }
+            30% {
+                height: 50px;
+                width: 40px;
+             
+            }
+            50% {
+                height: 25px;
+                width: 60px;
+                top: 250px;
+               
+            }
+            75% {
+                height: 50px;
+                width: 57px;
+        
+            }
+            }
+
+            .shadowAnimation {
+            background-color: black;
+            height: 10px;
+            width: 30px;
+            border-radius: 50%;
+            position: relative;
+            top: 280px;
+            left: 232px;
+            opacity: 20%;
+            animation: shadow 1s infinite;
+            }
+            @keyframes shadow {
+            10% {
+                transform: scaleX(1);
+                opacity: 20%;
+            }
+            35% {
+            transform: scaleX(1.5);
+            opacity: 30%;
+            }
+            50% {
+            transform: scaleX(2);
+            opacity: 40%;
+            }
+            75% {
+            transform: scaleX(1.5);
+            opacity: 30%;
+            }
+            100% {
+            Transform: scaleX(1);
+            opacity: 20%;
+            }
+
+            }
+
+            * {
+             box-sizing: border-box;
+            }
+            
+            body {
+            font-family: Arial;
+            padding: 20px;
+            background: #f1f1f1;
+            }
+            .header {
+            padding: 30px;
+            font-size: 40px;
+            text-align: center;
+            background: white;
+            }
+            /* Left column */
+            .leftcolumn {
+            float: left;
+            width: 75%;
+            }
+
+            /* Right column */
+            .rightcolumn {
+            float: right;
+            width: 25%;
+            text-align: center;
+            padding-left: 20px;
+            }
+
+            .btn {
+            background-color: ##e7e7e7;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            
+            font-size: 16px;
+            }
+
+            .container {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+            }
+
+            .row:after {
+            content: "";
+            display: table;
+            clear: both;
+            }
+
+            .footer {
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+
+            }
+
+            ul{
+                background-color: #ddd;
+            }
+        </style>
     </head>
     <body>
-    <h1>Hello World</h1>
-    <img src="/images/exploits_of_a_mom.png">
-    <ul>
-    {% for txt in data%}
-    <ul>{{txt.blog_id}}
-    -
-    {{txt.blog_txt}}
-    </ul>
-    {% endfor%}
-    </ul>
+        <div class="header">
+        <h2>Emily's Final Blog</h2>
+     </div>
+        <ul>
+            {% for txt in data%}
+            <ul>
+            {{txt.blog_id}} - {{txt.blog_txt}}
+            </ul>
+            {% endfor%}
+        </ul>
 
-    <hr>
-    <h2>Add stuff</h2>
-    <form action="/add" method="POST">
-    <div>
-    <label for="blog">What is your blog txt?</label>
-    <input name="blog" id="blog" value="Hi this is my blog text!"/>
+        <h2>Delete stuff</h2>
+                <form action="/delete" method="POST">
+            <div>
+                <label for="blog">Blog to delete?</label>
+                <input name="blog" id="blog" value="1" />
+            </div>
+            <div>
+                <button>delete my blog</button>
+            </div>
+        </form>
+        <div class="row">
+            <div class="leftcolumn">
+                <div class="container">
+                    <h2> {% for txt in data%}
+                    <p>{{txt.blog_id}} - {{txt.blog_txt}}<p>
+                    {% endfor%}
+                    </h2>
+                    {% for txt in data%}
+                    <p>{{txt.blog_txt}} <p>
+                {% endfor%}
+                </div>     
+            </div>
+        <div class="rightcolumn">
+            <div class="container">
+                <h3>New Blog Entry</h3>
+                 <form action="/add" method="POST">
+            <div>
+                <input name="blog" id="blog" value="Enter blog title here" />
+            </div>
+            <div class="btn">
+                <button>Set title</button>
+            </div>
+        </form>
+                <form action="/add" method="POST">
+            <div>
+                <input name="blog" id="blog" value="Enter blog text here" />
+            </div>
+            <div class="btn">
+                <button>Create Post</button>
+            </div>
+        </form>
+       
+        </div>
     </div>
-    <div>
-    <button>Send my blog</button>
-    </div>
-    </form>
-    <hr>
-    <h2>Delete stuff</h2>
-    <form action="/delete" method="POST">
-    <div>
-    <label for="blog">Blog to delete?</label>
-    <input name="blog" id="blog" value="1"/>
-    </div>
-    <div>
-    <button>delete my blog</button>
-    </div>
-    </form>
+
+
+         <div class="footer"> 
+                <div class="shadowAnimation"></div>
+                <div class="ballAnimation"></div>
+         </div>
+       
+        
+
+       
+
+
     </body>
-    </html>>>>{%- endcomment -%}
-</html>>>
+</html>
