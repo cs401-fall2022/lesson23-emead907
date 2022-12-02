@@ -20,7 +20,7 @@
                 background-color: rgb(76, 143, 187);
                 height: 50px;
                 width: 50px;
-                top: 50px;
+                top: 25px;
                 left: 220px;
                 border-radius: 50%;
                 position: relative;
@@ -106,15 +106,26 @@
             /* Left column */
             .leftcolumn {
             float: left;
-            width: 75%;
+            width: 70%;
+            
+            padding-right: 20px;
             }
 
             /* Right column */
             .rightcolumn {
             float: right;
-            width: 25%;
+            width: 30%;
             text-align: center;
             padding-left: 20px;
+           
+            }
+
+            input {
+                text-align: center;
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
             }
 
             .btn {
@@ -124,7 +135,6 @@
             padding: 15px 32px;
             text-align: center;
             text-decoration: none;
-            
             font-size: 16px;
             }
 
@@ -140,80 +150,87 @@
             clear: both;
             }
 
-            .footer {
+           .footer {
             padding: 20px;
             text-align: center;
-            margin-top: 50px;
-
+            background: #ddd;
+            margin-top: 20px;
             }
 
             ul{
-                background-color: #ddd;
+                text-size: 60px;
+            }
+
+            .title {
+                padding: 70px;
+                font-size: 60px;
+                text-align: center;
             }
         </style>
     </head>
-    <body>
+    <body>       
         <div class="header">
         <h2>Emily's Final Blog</h2>
+        
      </div>
-        <ul>
-            {% for txt in data%}
-            <ul>
-            {{txt.blog_id}} - {{txt.blog_txt}}
-            </ul>
-            {% endfor%}
-        </ul>
+        
+           
+        
 
-        <h2>Delete stuff</h2>
-                <form action="/delete" method="POST">
-            <div>
-                <label for="blog">Blog to delete?</label>
-                <input name="blog" id="blog" value="1" />
-            </div>
-            <div>
-                <button>delete my blog</button>
-            </div>
-        </form>
+        
         <div class="row">
             <div class="leftcolumn">
-                <div class="container">
-                    <h2> {% for txt in data%}
-                    <p>{{txt.blog_id}} - {{txt.blog_txt}}<p>
-                    {% endfor%}
-                    </h2>
-                    {% for txt in data%}
-                    <p>{{txt.blog_txt}} <p>
+            <div class="title">Blog Posts</div>
+                {% for txt in data%}
+                <ul>
+                {{txt.blog_id}} - {{txt.blog_txt}}
+                </ul>
                 {% endfor%}
-                </div>     
             </div>
         <div class="rightcolumn">
             <div class="container">
-                <h3>New Blog Entry</h3>
+                <h2>New Blog Entry</h2>
                  <form action="/add" method="POST">
+                    <div>
+                        <input name="blog" id="blog" value="Enter blog text here" />
+                    </div>
+                    <div class="btn">
+                        <button>Post</button>
+                    </div>
+                </form>
+                <div class="container">
+                  <h2>Edit Post<h2>
+                      <form action="/add" method="POST">
+                          <div>
+                              <input name="blog" id="blog" value="Enter new blog text here" />
+                          </div>
+                          <div class="btn">
+                              <button>Edit</button>
+                          </div>
+                      </form>
+
+                      <h2>Delete stuff</h2>
+                <form action="/delete" method="POST">
             <div>
-                <input name="blog" id="blog" value="Enter blog title here" />
+                <input name="blog" id="blog" value="Number of blog" />
             </div>
-            <div class="btn">
-                <button>Set title</button>
-            </div>
+             <div class="btn">
+                <button>Delete</button>
+             </div>
         </form>
-                <form action="/add" method="POST">
-            <div>
-                <input name="blog" id="blog" value="Enter blog text here" />
-            </div>
-            <div class="btn">
-                <button>Create Post</button>
-            </div>
-        </form>
-       
+              </div>
         </div>
     </div>
 
 
-         <div class="footer"> 
-                <div class="shadowAnimation"></div>
-                <div class="ballAnimation"></div>
-         </div>
+    <div class="row">
+        <div class="rightcolumn">   
+        </div>
+    </div>
+
+    <div class="footer">
+        <h2>Footer</h2>
+      </div>
        
         
 
