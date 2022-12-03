@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="">
 
         <style>
+            
             .ballBackground {
             background-color: rgb(216, 178, 205);
             height: 200px;
@@ -93,36 +94,37 @@
             }
             
             body {
-            font-family: Arial;
+            font-family: "Lucida Console", "Courier New", monospace;
             padding: 20px;
-            background: #f1f1f1;
-            }
-            .header {
-            padding: 30px;
-            font-size: 40px;
-            text-align: center;
             background: white;
             }
-            /* Left column */
+            .header {
+            font-size: 30px;
+            text-align: Left;
+            color: rgb(242,160,116);
+            }
+           
             .leftcolumn {
             float: left;
-            width: 70%;
-            
+            width: 50%;
+            text-align: center;
+            background: #c2a295;
             padding-right: 20px;
             }
 
-            /* Right column */
+    
             .rightcolumn {
+            background: #c2a295;
             float: right;
-            width: 30%;
+            width: 50%;
             text-align: center;
             padding-left: 20px;
            
             }
 
             input {
-                text-align: center;
-            width: 100%;
+            text-align: center;
+            width: 75%;
             padding: 12px 20px;
             margin: 8px 0;
             box-sizing: border-box;
@@ -138,7 +140,7 @@
             font-size: 16px;
             }
 
-            .container {
+            .boxes {
             background-color: white;
             padding: 20px;
             margin-top: 20px;
@@ -150,15 +152,13 @@
             clear: both;
             }
 
-           .footer {
-            padding: 20px;
-            text-align: center;
-            background: #ddd;
-            margin-top: 20px;
-            }
+           
 
             ul{
                 text-size: 60px;
+                background: #f1f1f1;
+                padding: 30px;
+                width: 100%;
             }
 
             .title {
@@ -166,40 +166,62 @@
                 font-size: 60px;
                 text-align: center;
             }
+            .colorbar {
+            background: #1c4c3b;
+            width: 50%;
+            text-align: center;
+            padding: 30px;
+            margin-left: 25%;
+            
+            }
+
+            .colortxt{
+                font-size: 25px;
+                color: rgb(242,160,116);
+                
+            }
+
+            p{
+                font-size: 20px;
+            }
+           
+
         </style>
     </head>
     <body>       
         <div class="header">
-        <h2>Emily's Final Blog</h2>
+        <h2>Lets Talk About Plants</h2>
+        </div>
         
-     </div>
-        
-           
-        
+          
+         <div class="row">
+            <div class="colorbar">
+              
+                    <div class="colortxt">New Blog Entry</div>
+                        <form action="/add" method="POST">
+                            <div>
+                                <input name="blog" id="blog" value="Enter blog text here" />
+                            </div>
+                            <div class="btn">
+                                <button>Post</button>
+                            </div>
+                        </form>
+               
+            </div>
+         </div>
 
-        
-        <div class="row">
-            <div class="leftcolumn">
-            <div class="title">Blog Posts</div>
+        <div class="title">Blog Posts</div>
                 {% for txt in data%}
-                <ul>
-                {{txt.blog_id}} - {{txt.blog_txt}}
+                <ul class="list">
+                 Post number: {{txt.blog_id}}
+                 <p>{{txt.blog_txt}}</p>
                 </ul>
                 {% endfor%}
-            </div>
-        <div class="rightcolumn">
-            <div class="container">
-                <h2>New Blog Entry</h2>
-                 <form action="/add" method="POST">
-                    <div>
-                        <input name="blog" id="blog" value="Enter blog text here" />
-                    </div>
-                    <div class="btn">
-                        <button>Post</button>
-                    </div>
-                </form>
-                <div class="container">
-                  <h2>Edit Post<h2>
+    </div>
+
+        <div class="row">
+            <div class="leftcolumn">
+            <h2>Edit Post<h2>
                       <form action="/edit" method="POST">
                           <div>
                             <input name="blog" id="blog" value="Enter blog number" />
@@ -209,6 +231,11 @@
                               <button>Edit</button>
                           </div>
                       </form>
+            </div>
+        <div class="rightcolumn">
+            <div class="">
+                
+                <div class="">
 
                       <h2>Delete stuff</h2>
                 <form action="/delete" method="POST">
@@ -217,6 +244,13 @@
             </div>
              <div class="btn">
                 <button>Delete</button>
+             </div>
+        </form>
+
+        <form action="/deleteall" method="POST">
+        
+             <div class="btn">
+                <button>Delete All Posts</button>
              </div>
         </form>
               </div>
@@ -229,9 +263,7 @@
         </div>
     </div>
 
-    <div class="footer">
-        <h2>Footer</h2>
-      </div>
+   
        
         
 
